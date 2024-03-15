@@ -6,7 +6,7 @@ import gleam/result
 import gleam/string
 import simplifile
 
-const input_path = "./inputs/d2"
+const input_path = "./inputs/d2p1"
 
 fn get_max_cubes_from_input_hd(hd: String) -> Dict(String, Int) {
   let get_max_cubes_tuple_from_string = fn(str: String) -> #(String, Int) {

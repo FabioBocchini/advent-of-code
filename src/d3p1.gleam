@@ -8,7 +8,7 @@ import gleam/string
 import simplifile
 import utils
 
-const input_path = "./inputs/d3"
+const input_path = "./inputs/d3p1"
 
 fn is_symbol(char: String) -> Bool {
   char != "." && char != "" && result.is_error(int.parse(char))
