@@ -8,7 +8,7 @@ import gleam/string
 import simplifile
 import utils
 
-const input_path = "./inputs/d3p2"
+const input_path = "./inputs/d3"
 
 type Gear =
   #(Int, Int)

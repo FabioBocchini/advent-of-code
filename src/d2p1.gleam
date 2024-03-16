@@ -6,7 +6,7 @@ import gleam/result
 import gleam/string
 import simplifile
 
-const input_path = "./inputs/d2p1"
+const input_path = "./inputs/d2"
 
 fn get_max_cubes_from_input_hd(hd: String) -> Dict(String, Int) {
   let get_max_cubes_tuple_from_string = fn(str: String) -> #(String, Int) {
@@ -77,11 +77,11 @@ fn get_game_id(game_str: String) -> Int {
 
 pub fn main() {
   let assert Ok(file) = simplifile.read(from: input_path)
-  let assert [hd, ..rows] = string.split(file, on: "\n")
 
-  let max_cubes = get_max_cubes_from_input_hd(hd)
+  let max_cubes = get_max_cubes_from_input_hd("12 red; 13 green; 14 blue")
 
-  rows
+  file
+  |> string.split(on: "\n")
   |> list.filter(is_game_possible(_, max_cubes))
   |> list.map(get_game_id)
   |> list.fold(0, int.add)

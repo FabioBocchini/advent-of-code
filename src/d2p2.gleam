@@ -6,7 +6,7 @@ import gleam/option
 import gleam/string
 import simplifile
 
-const input_path = "./inputs/d2p2"
+const input_path = "./inputs/d2"
 
 fn calculate_minimum_cubes(
   round: List(String),
