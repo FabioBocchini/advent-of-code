@@ -84,3 +84,9 @@ pub fn get_digit_coordinates(str: String) -> DigitIndexLength {
   |> string.split("")
   |> get_digit_coordinates_aux(dict.new(), None, 0)
 }
+
+pub fn min_pos(a: Int, b: Int) -> Int {
+  use <- bool.guard(when: a == -1, return: b)
+  use <- bool.guard(when: b == -1, return: a)
+  int.min(a, b)
+}

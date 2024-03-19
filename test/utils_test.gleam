@@ -50,3 +50,15 @@ pub fn get_digit_coordinates_full_test() {
   utils.get_digit_coordinates("123")
   |> should.equal(dict.from_list([#(0, 3)]))
 }
+
+/// min_pos
+pub fn min_pos() {
+  utils.min_pos(1, 2)
+  |> should.equal(1)
+
+  utils.min_pos(1, -1)
+  |> should.equal(1)
+
+  utils.min_pos(-1, 1)
+  |> should.equal(1)
+}

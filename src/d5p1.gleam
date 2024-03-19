@@ -36,7 +36,9 @@ fn get_maps(rows: List(String)) -> List(Map) {
 }
 
 fn get_dest(source: Int, map: Map) -> Int {
-  case list.find(map, fn(res_r) { res_r.from < source && res_r.to > source }) {
+  case
+    list.find(map, fn(res_r) { res_r.from <= source && res_r.to >= source })
+  {
     Ok(r) -> source + r.jump
     Error(_) -> source
   }
