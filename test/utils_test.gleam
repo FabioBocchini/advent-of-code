@@ -1,4 +1,5 @@
 import gleam/dict
+import gleam/order.{Eq, Gt, Lt}
 import gleeunit
 import gleeunit/should
 import utils
@@ -52,7 +53,7 @@ pub fn get_digit_coordinates_full_test() {
 }
 
 /// min_pos
-pub fn min_pos() {
+pub fn min_pos_test() {
   utils.min_pos(1, 2)
   |> should.equal(1)
 
@@ -61,4 +62,17 @@ pub fn min_pos() {
 
   utils.min_pos(-1, 1)
   |> should.equal(1)
+}
+
+/// compare_from_list
+pub fn compare_from_list_test() {
+  let compare = utils.compare_from_list([1, 2, 3, 4])
+  compare(1, 2)
+  |> should.equal(Lt)
+
+  compare(2, 2)
+  |> should.equal(Eq)
+
+  compare(2, 1)
+  |> should.equal(Gt)
 }

@@ -1,8 +1,9 @@
 import gleam/bool
 import gleam/dict.{type Dict}
 import gleam/int
-import gleam/list
+import gleam/list.{Continue, Stop}
 import gleam/option.{type Option, None, Some}
+import gleam/order.{type Order}
 import gleam/result.{try}
 import gleam/string
 
@@ -89,4 +90,27 @@ pub fn min_pos(a: Int, b: Int) -> Int {
   use <- bool.guard(when: a == -1, return: b)
   use <- bool.guard(when: b == -1, return: a)
   int.min(a, b)
+}
+
+pub fn compare_from_list(list: List(a)) -> fn(a, a) -> Order {
+  fn(a: a, b: a) {
+    let #(ia, ib, _) =
+      list.fold_until(list, #(-1, -1, 0), fn(acc, i) {
+        let #(ia, ib, index) = acc
+        let ia2 = case ia == -1 && i == a {
+          True -> index
+          False -> ia
+        }
+        let ib2 = case ib == -1 && i == b {
+          True -> index
+          False -> ib
+        }
+        case ia2 != -1 && ib2 != -1 {
+          True -> Stop(#(ia2, ib2, index))
+          False -> Continue(#(ia2, ib2, index + 1))
+        }
+      })
+
+    int.compare(ia, ib)
+  }
 }
