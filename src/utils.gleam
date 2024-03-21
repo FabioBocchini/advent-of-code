@@ -114,3 +114,14 @@ pub fn compare_from_list(list: List(a)) -> fn(a, a) -> Order {
     int.compare(ia, ib)
   }
 }
+
+pub fn gcd(a: Int, b: Int) -> Int {
+  case b {
+    0 -> a
+    _ -> gcd(b, a % b)
+  }
+}
+
+pub fn lcm(a: Int, b: Int) -> Int {
+  a * b / gcd(a, b)
+}
