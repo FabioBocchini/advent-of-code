@@ -21,3 +21,7 @@ pub fn contains(set: Set(a), item: a) -> Bool {
 pub fn insert(set: Set(a), item: a) -> Set(a) {
   dict.insert(set, item, True)
 }
+
+pub fn size(set: Set(a)) -> Int {
+  dict.size(set)
+}
